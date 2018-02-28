@@ -25,5 +25,12 @@
 		<span class="result-item">Before IO Lab, your front end skillz were at a {{ surveyResponse['fe-before']}}</span>
 		<span class="result-item">But in just a few short weeks of IO Lab, your front end skillz are now a {{ surveyResponse['fe-after']}}</span>
 
+		<!-- extra point -->
+		{% if surveyResponse['fe-before']|float >= surveyResponse['fe-after']|float %}
+			<span class="result-item">Good job! You improved!</span>
+		{% else %}
+			<span class="result-item">Oh, we are sorry for that : (</span>
+		{% endif %}
+
 	</div>
 {% endblock %}

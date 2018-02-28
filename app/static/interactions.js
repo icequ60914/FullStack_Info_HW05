@@ -4,7 +4,18 @@ $('#submit-survey').on('click', function submitSurvey() {
 	var vacation = $("input[name=vacation]").val();
 	var feBefore = $("input[name=front-end-before]").val();
 	var feAfter = $("input[name=front-end-after]").val();
+	$.post("/submit-survey", 
+		{'color': color,
+		'food': food,
+		'vacation': vacation,
+		'feBefore': feBefore,
+		'feAfter': feAfter},
+		function(data) {
+			$(document.body.parentNode).html(data);
+		}
+	);
 });
+
 
 $("#site-title-wrapper").on('click', function goHome() {
 	window.location.href = '/';
@@ -22,3 +33,8 @@ $("input[type='range']").on('change', function updateLabel() {
 	var currentValue = $(this).val();
 	$(this).next().html(currentValue);
 });
+
+// function renderData(data) {
+// 	console.log("here");
+// 	$(document.body).html(data);
+// }
